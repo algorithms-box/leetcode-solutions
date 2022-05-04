@@ -1,26 +1,59 @@
-from typing import List
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        hashMap = {}
-        for i, num in enumerate(nums):
-            if target - num in hashMap:
-                return [hashMap[target - num], i]
-            hashMap[num] = i
-            # Note: have to judgement goes firt, then put it into hashMap
-            # think of the test case: [3,2,4] 6
-        return []
+    def addTwoNumber(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        head = ListNode(val=0)
+        n1 = 0
+        n2 = 0
+        carry = 0
+        current = head
+
+        while l1 is not None or l2 is not None or carry != 0:
+            if l1 is not None:
+                n1 = l1.val
+                l1 = l1.next
+            else:
+                n1 = 0
+
+            if l2 is not None:
+                n2 = l2.val
+                l2 = l2.next
+            else:
+                n2 = 0
+
+            current.next = ListNode(val=(n1+n2+carry) % 10)
+            current = current.next
+            carry = (n1+n2+carry)//10
+
+        return head.next
 
 
 def main():
-    # nums = [1, 5, 3, 15, 33]
-    # target = 8
-    nums = [3, 2, 4]
-    target = 6
+    l11 = ListNode(val=8)
+    l12 = ListNode(val=3, next=l11)
+    l13 = ListNode(val=6, next=l12)
+
+    l21 = ListNode(val=7)
+    l22 = ListNode(val=1, next=l21)
+    l23 = ListNode(val=9, next=l22)
+
     s = Solution()
-    result = s.twoSum(nums, target)
-    print(result)
+    result = s.addTwoNumber(l13, l23)
+    print(result.val)
+    p = result.next
+    while p is not None:
+        print(p.val)
+        if p.next is None:
+            break
+        else:
+            p = p.next
 
 
 if __name__ == "__main__":

@@ -1,20 +1,33 @@
 /*turn off the assert*/
 /* #define NDEBUG */
+#include <iostream>
 #include <cassert>
-#include "two_sum.h"
+#include "add_two_numbers.h"
+
+ListNode* create_linkedlist(std::initializer_list<int> lst)
+{
+    auto iter = lst.begin();
+    ListNode* head = lst.size() ? new ListNode(*iter++) : NULL;
+    for (ListNode* cur = head; iter != lst.end(); cur = cur->next)
+        cur->next = new ListNode(*iter++);
+    return head;
+}
 
 int main()
 {
     Solution s;
 
-    std::vector<int> v1{2, 7, 11, 15};
-    assert( (s.twoSum(v1, 9) == std::vector<int> {0, 1}) );
+    ListNode *l1 = create_linkedlist({9, 9, 9, 9});
+    ListNode *l2 = create_linkedlist({9, 9});
+    ListNode *l3 = create_linkedlist({8, 9, 0, 0, 1});
 
-    std::vector<int> v2{0, 4, 3, 0};
-    assert( (s.twoSum(v2, 0) == std::vector<int> {0, 3}) );
+    ListNode *ret = s.addTwoNumber(l1, l2);
+    for (ListNode *cur = ret; cur; cur = cur->next)
+        std::cout << cur->val << "->";
+    std::cout << "\b\b" << std::endl;
 
-    std::vector<int> v3{-3, 4, 3, 90};
-    assert( (s.twoSum(v3, 0) == std::vector<int> {0, 2}) );
+    /* assert( (&ret ==  &l3)); */
+
 
     return 0;
 }
