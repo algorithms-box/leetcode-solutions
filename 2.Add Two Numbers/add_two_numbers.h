@@ -1,5 +1,4 @@
-struct ListNode
-{
+struct ListNode {
     int val;
     ListNode *next;
     ListNode(): val(0), next(nullptr) {}
@@ -8,11 +7,9 @@ struct ListNode
 };
 
 
-class Solution
-{
-public:
-    ListNode* addTwoNumber(ListNode* l1, ListNode* l2)
-    {
+class Solution {
+  public:
+    ListNode* addTwoNumber(ListNode* l1, ListNode* l2) {
         ListNode* head = new ListNode(0);
         ListNode* current = head;
         int n1 = 0;
@@ -20,25 +17,18 @@ public:
         int carry = 0;
 
         /* DO NOT forget add carry != 0, the last carry */
-        while (l1 || l2 || carry)
-        {
-            if (l1)
-            {
+        while (l1 || l2 || carry) {
+            if (l1) {
                 n1 = l1->val;
                 l1 = l1->next;
-            }
-            else
-            {
+            } else {
                 n1 = 0;
             }
 
-            if (l2)
-            {
+            if (l2) {
                 n2 = l2->val;
                 l2 = l2->next;
-            }
-            else
-            {
+            } else {
                 n2 = 0;
             }
 

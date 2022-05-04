@@ -4,7 +4,7 @@ using std::vector;
 using std::unordered_map;
 
 class Solution {
-public:
+  public:
     vector<int> twoSum(vector<int>& nums, int target) {
         unordered_map<int, int> record;
         for (int i = 0; i != nums.size(); ++i) {

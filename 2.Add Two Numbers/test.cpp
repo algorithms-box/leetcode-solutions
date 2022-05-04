@@ -4,8 +4,7 @@
 #include <cassert>
 #include "add_two_numbers.h"
 
-ListNode* create_linkedlist(std::initializer_list<int> lst)
-{
+ListNode* create_linkedlist(std::initializer_list<int> lst) {
     auto iter = lst.begin();
     ListNode* head = lst.size() ? new ListNode(*iter++) : NULL;
     for (ListNode* cur = head; iter != lst.end(); cur = cur->next)
@@ -13,8 +12,7 @@ ListNode* create_linkedlist(std::initializer_list<int> lst)
     return head;
 }
 
-int main()
-{
+int main() {
     Solution s;
 
     ListNode *l1 = create_linkedlist({9, 9, 9, 9});

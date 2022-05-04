@@ -3,8 +3,7 @@
 #include <cassert>
 #include "two_sum.h"
 
-int main()
-{
+int main() {
     Solution s;
 
     std::vector<int> v1{2, 7, 11, 15};
