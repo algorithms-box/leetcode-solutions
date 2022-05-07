@@ -1,4 +1,4 @@
-# This repo is the collections of multiple my LeetCode solutions repo
+# Collections of multiple my LeetCode solutions repo
 
 Includes all about LeetCode problems:
 
